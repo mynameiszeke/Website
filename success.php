@@ -1,4 +1,14 @@
 <?php
+/*
+ * Ezekiel Iyanobor
+ */
+require("libs/config.php");
+$pageDetails = getPageDetailsByName($currentPage);
+include("header.php");
+
+
+?>
+<?php
 /* Displays all successful messages */
 session_start();
 ?>
@@ -16,11 +26,11 @@ session_start();
     if( isset($_SESSION['message']) AND !empty($_SESSION['message']) ):
         echo $_SESSION['message'];    
     else:
-        header( "location: index.php" );
+        header( "location: index1.php" );
     endif;
     ?>
     </p>
-    <a href="index.php"><button class="button button-block"/>Home</button></a>
+    <a href="index1.php"><button class="button button-block"/>Home</button></a>
 </div>
 </body>
 </html>

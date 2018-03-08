@@ -17,7 +17,43 @@ if ( $_SESSION['logged_in'] != 1 ) {
   header("location: error.php");    
 }
 ?>
+<?php
 
+/**
+ * Function to query information based on 
+ * a parameter: in this case, e.
+ *
+ */
+
+if (isset($_POST['submit'])) 
+{
+	
+	try 
+	{
+		
+
+		$connection = new PDO($dsn, $username, $password, $options);
+
+		$sql = "SELECT * 
+						FROM target
+						WHERE aeid= :aeid";
+
+		$aeid = $_POST['aeid'];
+
+		$statement = $connection->prepare($sql);
+		$statement->bindParam(':aeid', $aeid, PDO::PARAM_STR);
+		$statement->execute();
+
+		$result = $statement->fetchAll();
+	}
+	
+	catch(PDOException $error) 
+	{
+		echo $sql . "<br>" . $error->getMessage();
+	}
+}
+?>
+		
 <?php  
 if (isset($_POST['submit'])) 
 {
@@ -28,10 +64,9 @@ if (isset($_POST['submit']))
 		<table>
 			<thead>
 				<tr>
-					<th>#</th>
+					<th>ID</th>
 					<th>AEID</th>
-					<th>Citation_ID</th>
-					<th>PMID</th>
+					<th>Target_ID</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -41,8 +76,7 @@ if (isset($_POST['submit']))
 			<tr>
 				<td><?php echo escape($row["id"]); ?></td>
 				<td><?php echo escape($row["aeid"]); ?></td>
-				<td><?php echo escape($row["citation_id"]); ?></td>
-				<td><?php echo escape($row["pmid"]); ?></td>
+				<td><?php echo escape($row["target_id"]); ?></td>
 			</tr>
 		<?php 
 		} ?>
@@ -52,21 +86,18 @@ if (isset($_POST['submit']))
 	} 
 	else 
 	{ ?>
-		<blockquote>No results found for <?php echo escape($_POST['citation_id']); ?>.</blockquote>
+		<blockquote>No results found for <?php echo escape($_POST['aeid']); ?>.</blockquote>
 	<?php
 	} 
 }?> 
 
-<h2>Find a citation based on citation id</h2>
+<h2>Find target based on aeid</h2>
 
 <form method="post">
-	<label for="citation_id">Citation ID</label>
-	<input type="text" id="citation_id" name="citation_id">
+	<label for="aeid">AEID</label>
+	<input type="text" id="aeid" name="aeid">
 	<input type="submit" name="submit" value="View Results">
 </form>
-
-
-
 
 
 <div class="row main-row">
@@ -77,7 +108,7 @@ if (isset($_POST['submit']))
         </section>
     <head>
  <meta charset = "UTF-8">
- <title>citation.php</title>
+ <title>target.php</title>
  <style type = "text/css">
   table, th, td {border: 1px solid black};
  </style>
@@ -88,7 +119,7 @@ if (isset($_POST['submit']))
   try {
   $con= new PDO('mysql:host=localhost;dbname=chemtox', "root", "");
   $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-  $query = "SELECT * FROM citation";
+  $query = "SELECT * FROM target";
   //first pass just gets the column names
   print "<table>";
   $result = $con->query($query);

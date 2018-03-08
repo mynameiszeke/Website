@@ -1,23 +1,16 @@
 <?php
-/*
- *Ezekiel Iyanobor
- */
 
+/**
+ * Use an HTML form to create a new entry in the
+ * target table.
+ *
+ */
 require("libs/config.php");
 $page = easy_decrypt($_GET["id"]);
 $pageDetails = getPageDetailsByName($page);
 include("header.php");
-?>
-<?php
-session_start();
 
-// Check if user is logged in using the session variable
-if ( $_SESSION['logged_in'] != 1 ) {
-  $_SESSION['message'] = "You must log in before viewing this page!";
-  header("location: error.php");    
-}
-?>
-<?php
+
 if (isset($_POST['submit']))
 {
 	
@@ -52,9 +45,9 @@ if (isset($_POST['submit']))
 
 <?php 
 if (isset($_POST['submit']) && $statement) 
-{
+{ ?>
 	<blockquote><?php echo $_POST['target_id']; ?> successfully added.</blockquote>
-
+<?php 
 } ?>
 
 <h2>Add a Target</h2>
@@ -66,5 +59,5 @@ if (isset($_POST['submit']) && $statement)
 	<input type="text" name="target_id" id="target_id">
 	<input type="submit" name="submit" value="Submit">
 </form>
-?>
+
 

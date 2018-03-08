@@ -32,14 +32,7 @@
                         <header id="header">
                             <h1><a href="index1" id="logo"><b><em>CHEMTOX SOLUTIONS</em></b></a></h1>
                             <nav id="nav">
-                                <a href="index1.php" <?php echo ($currentPage == "index1") ? ' class="current-page-item"' : '' ?> >Home</a>
-                                <a href="assay.php" <?php echo ($currentPage == "assay") ? ' class="current-page-item"' : '' ?>>Assay</a>
-                                <a href="chemical.php" <?php echo ($currentPage == "chemical") ? ' class="current-page-item"' : '' ?>>Chemical</a>
-								<a href="citation.php" <?php echo ($currentPage == "citation") ? ' class="current-page-item"' : '' ?>>Citation</a>
-                                <a href="target.php" <?php echo ($currentPage == "target") ? ' class="current-page-item"' : '' ?>>Target</a>
-                                <a href="toxicity.php" <?php echo ($currentPage == "toxicity") ? ' class="current-page-item"' : '' ?>>Toxicity</a>
-                                <a href="users.php" <?php echo ($currentPage == "users") ? ' class="current-page-item"' : '' ?>>Users</a>
-
+                                
                                 <a href="profile.php" <?php echo ($currentPage == "profile") ? ' class="current-page-item"' : '' ?>>Profile</a>
                             </nav>
                         </header>

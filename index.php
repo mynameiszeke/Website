@@ -3,6 +3,16 @@
 require 'db.php';
 session_start();
 ?>
+<?php
+/*
+ *Ezekiel Iyanobor
+ */
+
+require("libs/config.php");
+$page = easy_decrypt($_GET["id"]);
+$pageDetails = getPageDetailsByName($page);
+include("header.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>

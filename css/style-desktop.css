@@ -148,7 +148,7 @@
 		border-radius: 10px;
 		padding: 20px;
 		background: #fff url(images/banner.jpg) no-repeat 20px 20px;
-		background-size: 1160px 265px;
+		background-size: contain;
 	}
 
 		#banner h2 {

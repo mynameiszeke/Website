@@ -1,10 +1,18 @@
 <?php
+
+/**
+ * Escapes HTML for output
+ *
+ */
+
+function escape($html)
+{
+	return htmlspecialchars($html, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
+}
+?>
+<?php
 /*
- * @author Shahrukh Khan
- * @website http://www.thesoftwareguy.in
- * @facebook https://www.facebook.com/Thesoftwareguy7
- * @twitter https://twitter.com/thesoftwareguy7
- * @googleplus https://plus.google.com/+thesoftwareguyIn
+ * Ezekiel Iyanobor
  */
 
 
@@ -48,3 +56,18 @@ try {
 }
 
 ?>
+<?php
+
+/**
+ * Configuration for database connection
+ *
+ */
+
+$host       = "localhost";
+$username   = "root";
+$password   = "";
+$dbname     = "chemtox";
+$dsn        = "mysql:host=$host;dbname=$dbname";
+$options    = array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+              ); ?>

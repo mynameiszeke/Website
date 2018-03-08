@@ -1,3 +1,13 @@
+<?php
+/*
+ * Ezekiel Iyanobor
+ */
+require("libs/config.php");
+$pageDetails = getPageDetailsByName($currentPage);
+include("header.php");
+
+
+?>
 <?php 
 /* Reset your password form, sends reset.php password link */
 require 'db.php';
